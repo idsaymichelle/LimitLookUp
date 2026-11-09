@@ -1,0 +1,87 @@
+name: LimitLookUp
+options:
+  developmentLanguage: en
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    SWIFT_EMIT_LOC_STRINGS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Automatic
+targets:
+  LimitLookUp:
+    type: application
+    platform: iOS
+    sources: [App, Shared]
+    dependencies:
+      - target: UsageWidget
+      - target: LimitLookUpWatch
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.limitlookup.app
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: LimitLookUp
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, ru, zh-Hant, zh-Hans, es, ko, ar, de, it, fr, ja]
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen: {}
+        UIBackgroundModes: [fetch]
+        BGTaskSchedulerPermittedIdentifiers: [refresh]
+    entitlements:
+      path: App/App.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.limitlookup.app]
+        com.apple.developer.applesignin: [Default]
+  UsageWidget:
+    type: app-extension
+    platform: iOS
+    sources: [Widget, Shared]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.limitlookup.app.widget
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: LimitLookUp
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, ru, zh-Hant, zh-Hans, es, ko, ar, de, it, fr, ja]
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/Widget.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.limitlookup.app]
+  LimitLookUpWatch:
+    type: application
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources: [Watch, Shared/Models.swift, Shared/Theme.swift, Shared/Lang.swift, Shared/Localizable.xcstrings]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.limitlookup.app.watchkitapp
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: LimitLookUp
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.limitlookup.app
+        INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+  LimitLookUpMac:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources: [Mac, Shared, App/AppModel.swift, App/Fetcher.swift, App/Insights.swift, App/Cards.swift, App/Brand.swift]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.limitlookup.mac
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: LimitLookUp
+        INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_IDENTITY: "-"
+        ENABLE_HARDENED_RUNTIME: NO

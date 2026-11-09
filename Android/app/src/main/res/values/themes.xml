@@ -1,0 +1,7 @@
+<resources>
+    <color name="bg">#EDEBE4</color>
+    <color name="icon_bg">#EDEBE4</color>
+    <style name="Theme.LimitLookUp" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+    </style>
+</resources>
