@@ -7792,72 +7792,72 @@
         }
       }
     },
-    "See how much of your Claude Code and Codex limits is left and when they reset. Sign in with Apple to start; your name and email stay on this device.": {
+    "See how much of your Claude Code and Codex limits is left and when they reset.": {
       "localizations": {
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Смотрите, сколько осталось лимитов Claude Code и Codex и когда они сбросятся. Чтобы начать, войдите через Apple — имя и почта останутся на этом устройстве."
+            "value": "Смотрите, сколько осталось лимитов Claude Code и Codex и когда они сбросятся."
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "查看 Claude Code 與 Codex 限額還剩多少、何時重設。使用 Apple 登入即可開始，你的姓名與電子郵件只保留在此裝置上。"
+            "value": "查看 Claude Code 與 Codex 限額還剩多少、何時重設。"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "查看 Claude Code 和 Codex 限额还剩多少、何时重置。通过 Apple 登录即可开始，你的姓名和电子邮件只保留在此设备上。"
+            "value": "查看 Claude Code 和 Codex 限额还剩多少、何时重置。"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mira cuánto te queda de tus límites de Claude Code y Codex y cuándo se restablecen. Inicia sesión con Apple para empezar; tu nombre y correo se quedan en este dispositivo."
+            "value": "Mira cuánto te queda de tus límites de Claude Code y Codex y cuándo se restablecen."
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Claude Code와 Codex 한도가 얼마나 남았는지, 언제 초기화되는지 확인하세요. Apple로 로그인해 시작하세요. 이름과 이메일은 이 기기에만 남습니다."
+            "value": "Claude Code와 Codex 한도가 얼마나 남았는지, 언제 초기화되는지 확인하세요."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اعرف ما تبقى من حدود Claude Code وCodex ومتى تتم إعادة تعيينها. سجّل الدخول باستخدام Apple للبدء؛ يبقى اسمك وبريدك على هذا الجهاز."
+            "value": "اعرف ما تبقى من حدود Claude Code وCodex ومتى تتم إعادة تعيينها."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sieh, wie viel von deinen Claude-Code- und Codex-Limits übrig ist und wann sie zurückgesetzt werden. Melde dich mit Apple an, um zu starten; Name und E-Mail bleiben auf diesem Gerät."
+            "value": "Sieh, wie viel von deinen Claude-Code- und Codex-Limits übrig ist und wann sie zurückgesetzt werden."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scopri quanto resta dei limiti di Claude Code e Codex e quando si azzerano. Accedi con Apple per iniziare; nome ed e-mail restano su questo dispositivo."
+            "value": "Scopri quanto resta dei limiti di Claude Code e Codex e quando si azzerano."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Voyez ce qu'il reste de vos limites Claude Code et Codex et quand elles se réinitialisent. Connectez-vous avec Apple pour commencer ; votre nom et votre e-mail restent sur cet appareil."
+            "value": "Voyez ce qu'il reste de vos limites Claude Code et Codex et quand elles se réinitialisent."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Claude Code と Codex の上限があとどれだけ残っているか、いつリセットされるかを確認できます。Apple でサインインして始めましょう。名前とメールはこのデバイスにのみ保存されます。"
+            "value": "Claude Code と Codex の上限があとどれだけ残っているか、いつリセットされるかを確認できます。"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "See how much of your Claude Code and Codex limits is left and when they reset. Sign in with Apple to start; your name and email stay on this device."
+            "value": "See how much of your Claude Code and Codex limits is left and when they reset."
           }
         }
       }

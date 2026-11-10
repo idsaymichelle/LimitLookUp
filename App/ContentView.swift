@@ -1,7 +1,6 @@
 import SwiftUI
 import WebKit
 import WidgetKit
-import AuthenticationServices
 
 /// Three tabs: limits, history, settings (settings sits bottom-right, as the last tab).
 struct ContentView: View {
@@ -224,7 +223,6 @@ struct SettingsView: View {
     @AppStorage("showIdentity", store: Store.defaults) private var showIdentity = true
     @AppStorage("onboarded", store: Store.defaults) private var onboarded = false
     @Environment(\.colorScheme) private var colorScheme
-    @State private var signedIn = Profile.isSignedIn
     @State private var confirmClear = false
     @State private var confirmDeleteAll = false
 
@@ -237,21 +235,8 @@ struct SettingsView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 0))
                 }
                 Section {
-                    if signedIn {
-                        LabeledContent("Name", value: Profile.name ?? "—")
-                        LabeledContent("Email", value: Profile.email ?? "—")
-                        Button("Sign out", role: .destructive) { Profile.signOut(); signedIn = false; onboarded = false }
-                        Button("Delete all data", role: .destructive) { confirmDeleteAll = true }
-                    } else {
-                        SignInWithAppleButton(.signIn) { $0.requestedScopes = [.fullName, .email] } onCompletion: { r in
-                            if case .success(let auth) = r, let c = auth.credential as? ASAuthorizationAppleIDCredential {
-                                Profile.save(c); signedIn = true
-                            }
-                        }
-                        .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
-                        .frame(height: 46)
-                    }
-                } header: { Text("Profile") }
+                    Button("Delete all data", role: .destructive) { confirmDeleteAll = true }
+                }
 
                 Section {
                     Picker("Theme", selection: $theme) {
@@ -308,7 +293,7 @@ struct SettingsView: View {
             .toolbar(.hidden, for: .navigationBar)
             .alert("Delete all data?", isPresented: $confirmDeleteAll) {
                 Button("Delete all data", role: .destructive) {
-                    Task { await model.deleteAll(); signedIn = false; onboarded = false }
+                    Task { await model.deleteAll(); onboarded = false }
                 }
                 Button("Cancel", role: .cancel) {}
             } message: {

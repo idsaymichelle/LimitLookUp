@@ -147,9 +147,6 @@ final class AppModel: ObservableObject {
         Store.save([]); History.save([])
         CloudSync.removeThisDevice()
         if let d = UserDefaults(suiteName: Store.group) { d.dictionaryRepresentation().keys.forEach(d.removeObject(forKey:)) }
-        #if os(iOS)
-        Profile.signOut()
-        #endif
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         WidgetCenter.shared.reloadAllTimelines()
         #if os(iOS)

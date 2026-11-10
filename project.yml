@@ -37,7 +37,6 @@ targets:
       path: App/App.entitlements
       properties:
         com.apple.security.application-groups: [group.com.limitlookup.app]
-        com.apple.developer.applesignin: [Default]
   UsageWidget:
     type: app-extension
     platform: iOS

@@ -1,25 +1,5 @@
 import SwiftUI
-import AuthenticationServices
 import UserNotifications
-
-/// Contact details from Sign in with Apple. Kept on this device only; there is no server to send them to.
-enum Profile {
-    private static let d = UserDefaults.standard
-    static var name: String? { d.string(forKey: "profile.name") }
-    static var email: String? { d.string(forKey: "profile.email") }
-    static var isSignedIn: Bool { d.string(forKey: "profile.user") != nil }
-
-    /// Apple sends name and email only on the very first sign-in, so keep what we already have when they are missing.
-    static func save(_ c: ASAuthorizationAppleIDCredential) {
-        d.set(c.user, forKey: "profile.user")
-        if let n = c.fullName, let s = Optional(PersonNameComponentsFormatter().string(from: n)), !s.isEmpty { d.set(s, forKey: "profile.name") }
-        if let e = c.email { d.set(e, forKey: "profile.email") }
-    }
-
-    static func signOut() {
-        for k in ["profile.user", "profile.name", "profile.email"] { d.removeObject(forKey: k) }
-    }
-}
 
 /// Notification permission, read and requested in one place. The app needs alerts to do its job.
 enum NotificationAccess {
@@ -106,7 +86,6 @@ struct OnboardingView: View {
     @Environment(\.scenePhase) private var phase
     enum Step { case welcome, connect, notify, denied }
     @State private var step: Step = .welcome
-    @State private var appleFailed = false
     @State private var login: Account?
     @State private var loginFailed = false
 
@@ -126,15 +105,13 @@ struct OnboardingView: View {
         .animation(.easeOut(duration: 0.25), value: step)
         .task {
             #if DEBUG
-            // Sign in with Apple needs a paid developer team, so simulator runs can start one step later.
-            if CommandLine.arguments.contains("-skipAppleSignIn") { step = .connect }
-            if Profile.isSignedIn { step = model.accounts.isEmpty ? .connect : .notify }
+            if !model.accounts.isEmpty { step = .notify }
             // Preview any step: -onboardingStep welcome|connect|notify|denied
             if let i = CommandLine.arguments.firstIndex(of: "-onboardingStep"), i + 1 < CommandLine.arguments.count {
                 step = ["welcome": .welcome, "connect": .connect, "notify": .notify, "denied": .denied][CommandLine.arguments[i + 1]] ?? step
             }
             #else
-            if Profile.isSignedIn { step = model.accounts.isEmpty ? .connect : .notify }
+            if !model.accounts.isEmpty { step = .notify }
             #endif
         }
         .onChange(of: phase) { _, p in
@@ -154,22 +131,10 @@ struct OnboardingView: View {
 
     private var welcome: some View {
         OnboardingPage(step: 0, title: "Your AI limits at a glance",
-                       text: "See how much of your Claude Code and Codex limits is left and when they reset. Sign in with Apple to start; your name and email stay on this device.") {
+                       text: "See how much of your Claude Code and Codex limits is left and when they reset.") {
             DrawnMark()
         } actions: {
-            SignInWithAppleButton(.signIn) { $0.requestedScopes = [.fullName, .email] } onCompletion: { r in
-                if case .success(let auth) = r, let c = auth.credential as? ASAuthorizationAppleIDCredential {
-                    Profile.save(c); appleFailed = false; step = model.accounts.isEmpty ? .connect : .notify
-                } else { appleFailed = true }
-            }
-            .signInWithAppleButtonStyle(scheme == .dark ? .white : .black)
-            .frame(height: 54)
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            if appleFailed {
-                Text("Couldn’t sign in with Apple. Check your internet connection and try again.")
-                    .font(Theme.font(.footnote)).foregroundStyle(Theme.warn)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
+            PrimaryButton(title: "Continue") { step = model.accounts.isEmpty ? .connect : .notify }
         }
     }
 
