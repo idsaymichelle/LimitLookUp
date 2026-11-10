@@ -112,7 +112,7 @@ Apple doesn't allow installing iPhone apps from a file, so you build it once on 
    open LimitLookUp.xcodeproj
    ```
 5. In Xcode, sign in under **Settings → Accounts**. Then for each target (**LimitLookUp**, **UsageWidget**, **LimitLookUpWatch**) open **Signing & Capabilities** and choose your **Personal Team**.
-6. Connect the iPhone, select it at the top and press **Run** (⌘R). On the iPhone, allow the developer in **Settings → General → VPN & Device Management**, and turn on **Developer Mode** if asked.
+6. Connect the iPhone, select it at the top and press **Run** (⌘R). On the iPhone, allow the developer in **Settings → Privacy & Security**, and turn on **Developer Mode**.
 7. The watch app installs with the iPhone app when the watch is paired.
 
 > [!NOTE]
