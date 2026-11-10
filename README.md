@@ -111,10 +111,11 @@ Apple doesn't allow installing iPhone apps from a file, so you build it once on 
    xcodegen generate
    open LimitLookUp.xcodeproj
    ```
-5. In Xcode, sign in under **Settings → Accounts**. Then for each target (**LimitLookUp**, **UsageWidget**, **LimitLookUpWatch**) open **Signing & Capabilities** and choose your **Personal Team** 
-(The app includes Sign in with Apple as a standard way to set up an account, and it can cause an error when you build. In the LimitLookUp target, open the Signing & Capabilities tab, find the Sign in with Apple block under Signing and remove it by clicking the trash icon on the right).
-6. Connect the iPhone, select it at the top and press **Run** (⌘R). On the iPhone, allow the developer in **Settings → Privacy & Security**, and turn on **Developer Mode**.
-7. The watch app installs with the iPhone app when the watch is paired.
+5. In Xcode, sign in under **Settings → Accounts**. Then for each target (**LimitLookUp**, **UsageWidget**, **LimitLookUpWatch**) open **Signing & Capabilities** and choose your **Personal Team**.
+6. On the iPhone, allow the developer in **Settings → Privacy & Security**, and turn on **Developer Mode**.
+7. On the iPhone, open Settings → General → VPN & Device Management. Under “Developer App”, tap the Apple Development: your email entry. Tap Trust “Apple Development: ...” and confirm.
+8. Connect the iPhone, select it at the top and press **Run** (⌘R).
+9. The watch app installs with the iPhone app when the watch is paired.
 
 > [!NOTE]
 > With a free Apple Account the app stops opening after **7 days**. Connect the iPhone and press Run again to renew it; your accounts and history stay. A free account also allows up to 3 of your own apps per device. A paid Apple Developer membership removes both limits.
