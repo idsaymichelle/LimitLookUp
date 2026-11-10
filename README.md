@@ -112,10 +112,14 @@ Apple doesn't allow installing iPhone apps from a file, so you build it once on 
    open LimitLookUp.xcodeproj
    ```
 5. In Xcode, sign in under **Settings → Accounts**. Then for each target (**LimitLookUp**, **UsageWidget**, **LimitLookUpWatch**) open **Signing & Capabilities** and choose your **Personal Team**.
-6. On the iPhone, allow the developer in **Settings → Privacy & Security**, and turn on **Developer Mode**.
-7. On the iPhone, open Settings → General → VPN & Device Management. Under “Developer App”, tap the Apple Development: your email entry. Tap Trust “Apple Development: ...” and confirm.
-8. Connect the iPhone, select it at the top and press **Run** (⌘R).
-9. The watch app installs with the iPhone app when the watch is paired.
+6. Connect the iPhone with a cable, select it at the top of Xcode and press **Run** (⌘R). The first run installs the app but iOS won't open it yet.
+7. On the iPhone, turn on **Settings → Privacy & Security → Developer Mode** and let the iPhone restart. (The switch appears after the iPhone has been connected to Xcode once.)
+8. Open **Settings → General → VPN & Device Management**, tap the **Apple Development: …** entry under **Developer App**, tap **Trust** and confirm.
+9. Press **Run** in Xcode again. LimitLookUp opens on the iPhone.
+10. **Apple Watch:** the watch app is built into the iPhone app.
+    - On the watch, turn on **Settings → Privacy & Security → Developer Mode** (watchOS 9 and newer) and let it restart.
+    - If **Automatic App Install** is on in the Watch app on the iPhone, LimitLookUp appears on the watch within a minute or two. If not, open the **Watch** app on the iPhone → **My Watch** → **Available Apps** → **LimitLookUp** → **Install**.
+    - Add accounts on the iPhone: the watch shows what the iPhone sends.
 
 > [!NOTE]
 > With a free Apple Account the app stops opening after **7 days**. Connect the iPhone and press Run again to renew it; your accounts and history stay. A free account also allows up to 3 of your own apps per device. A paid Apple Developer membership removes both limits.
