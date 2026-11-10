@@ -1,6 +1,6 @@
 # Security
 
-Please report security problems privately: use **Security → Report a vulnerability** on this repository, or write to limitlookup@gmail.com.
+Please report security problems privately: use **Security → Report a vulnerability** on this repository.
 
 Never send passwords, cookies, session tokens or screenshots of sign-in pages.
 
